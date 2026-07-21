@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VasVal FIND — смены и короткие проекты в Париже</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#F7F4F0;--ink:#141311;--mut:#6E6862;--line:#E4DED6;--card:#fff}
+body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+h1,h2,h3,.serif{font-family:Newsreader,Georgia,serif;font-weight:400;letter-spacing:-.015em}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+
+/* header */
+header{background:var(--ink);color:#F7F4F0;position:sticky;top:0;z-index:50}
+.hd{display:flex;align-items:center;gap:28px;height:66px}
+.logo .n{font-family:Newsreader,serif;font-size:23px;line-height:1}
+.logo .s{font-size:9px;letter-spacing:.34em;opacity:.65;margin-top:2px}
+nav{display:flex;gap:22px;font-size:14px;opacity:.9}
+nav a:hover{opacity:.6}
+.hd .right{margin-left:auto;display:flex;align-items:center;gap:14px}
+select.lang{background:transparent;border:1px solid rgba(255,255,255,.25);color:#F7F4F0;border-radius:8px;padding:6px 8px;font-size:13px;font-family:inherit}
+select.lang option{color:#141311}
+.btn{display:inline-block;border:0;cursor:pointer;font-family:inherit;font-size:14px;font-weight:500;padding:11px 20px;border-radius:10px;background:var(--ink);color:#F7F4F0;transition:.15s}
+.btn:hover{opacity:.85}
+.btn.light{background:#F7F4F0;color:var(--ink)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.lnk{font-size:14px;opacity:.9}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding:64px 0 40px}
+.hero h1{font-size:56px;line-height:1.04}
+.hero p{color:var(--mut);margin:18px 0 26px;max-width:400px}
+.hero .cta{display:flex;gap:10px;flex-wrap:wrap}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;height:300px}
+.tile{border-radius:14px;position:relative;overflow:hidden;background:linear-gradient(160deg,#D9CFC3,#B3A697);background-size:cover;background-position:center}
+.tile:nth-child(2){background-image:linear-gradient(160deg,#C9BBA9,#8E8171)}
+.tile:nth-child(3){background-image:linear-gradient(160deg,#CFC6BC,#9A9086)}
+.tile b{position:absolute;left:12px;bottom:30px;color:#fff;font-weight:500;font-size:15px}
+.tile i{position:absolute;left:12px;bottom:12px;color:rgba(255,255,255,.8);font-style:normal;font-size:12px}
+
+/* search */
+.search{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:10px;display:flex;gap:4px;align-items:center;margin-bottom:14px}
+.fld{flex:1;padding:8px 14px;border-right:1px solid var(--line)}
+.fld:last-of-type{border:0}
+.fld label{display:block;font-size:11px;color:var(--mut);margin-bottom:2px}
+.fld input,.fld select{border:0;background:transparent;font-family:inherit;font-size:14px;width:100%;color:var(--ink);outline:none}
+.search .btn{padding:14px 30px}
+.note{font-size:12.5px;color:var(--mut);text-align:center;margin-bottom:44px}
+
+/* cats */
+.cats{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:56px}
+.cat{text-align:center;padding:14px 8px;border-radius:12px;cursor:pointer;transition:.15s}
+.cat:hover{background:var(--bg)}
+.cat svg{stroke:var(--ink);fill:none;stroke-width:1.3;margin-bottom:8px}
+.cat b{display:block;font-weight:500;font-size:14px}
+.cat span{font-size:12px;color:var(--mut)}
+
+/* feed */
+.sec{padding:8px 0 56px}
+.sec h2{font-size:34px;margin-bottom:6px}
+.sub{color:var(--mut);margin-bottom:22px}
+.tabs{display:inline-flex;background:var(--card);border:1px solid var(--line);border-radius:11px;padding:4px;margin-bottom:22px}
+.tabs button{border:0;background:transparent;font-family:inherit;font-size:14px;padding:9px 18px;border-radius:8px;cursor:pointer;color:var(--mut)}
+.tabs button.on{background:var(--ink);color:#F7F4F0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:8px}
+.card h3{font-size:20px}
+.card .m{font-size:13px;color:var(--mut)}
+.card .row{display:flex;align-items:center;justify-content:space-between;margin-top:6px;padding-top:14px;border-top:1px solid var(--line)}
+.card .p{font-family:Newsreader,serif;font-size:22px}
+.card .p small{font-size:11px;color:var(--mut);font-family:Inter,sans-serif;display:block}
+.card .btn{padding:9px 16px;font-size:13px}
+
+/* trust */
+.trust{background:var(--ink);color:#F7F4F0;border-radius:18px;padding:38px;display:grid;grid-template-columns:repeat(3,1fr);gap:34px;margin-bottom:56px}
+.trust b{font-family:Newsreader,serif;font-weight:400;font-size:19px;display:block;margin-bottom:6px}
+.trust p{font-size:13.5px;opacity:.72;line-height:1.6}
+
+/* how */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
+.step .n{font-family:Newsreader,serif;font-size:32px;opacity:.28}
+.step b{display:block;font-weight:500;margin:6px 0 4px}
+.step p{font-size:13.5px;color:var(--mut)}
+
+/* form */
+.form{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:34px;max-width:620px}
+.form .f{margin-bottom:16px}
+.form label{display:block;font-size:13px;color:var(--mut);margin-bottom:6px}
+.form input,.form select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:14px;background:var(--bg);color:var(--ink)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.calc{background:var(--bg);border-radius:11px;padding:14px 16px;font-size:13.5px;margin-bottom:18px}
+.calc div{display:flex;justify-content:space-between;padding:3px 0}
+.calc .net{font-weight:600;border-top:1px solid var(--line);margin-top:5px;padding-top:8px}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:13px;margin-bottom:10px;color:var(--mut)}
+.chk input{width:16px;height:16px;margin-top:2px;flex:0 0 auto}
+.legal{font-size:12.5px;color:var(--mut);border-left:2px solid var(--line);padding-left:14px;margin:20px 0}
+.legal p{margin-bottom:5px}
+
+footer{border-top:1px solid var(--line);margin-top:40px;padding:34px 0 50px;font-size:13px;color:var(--mut)}
+footer .fl{display:flex;gap:26px;flex-wrap:wrap;margin-bottom:16px}
+
+@media(max-width:900px){
+.hero{grid-template-columns:1fr;padding:38px 0 28px}.hero h1{font-size:40px}
+.tiles{height:210px}.search{flex-wrap:wrap}.fld{flex:1 1 45%;border-right:0}
+.search .btn{width:100%}.cats{grid-template-columns:repeat(2,1fr)}
+.grid,.trust,.steps{grid-template-columns:1fr}nav{display:none}
+.sec h2{font-size:27px}.form{padding:22px}.trust{padding:26px}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="wrap hd">
+  <a href="#" class="logo"><div class="n">VasVal</div><div class="s">FIND</div></a>
+  <nav>
+    <a href="#feed" data-i="nav1"></a>
+    <a href="#feed" data-i="nav2"></a>
+    <a href="#how" data-i="nav3"></a>
+    <a href="#post" data-i="nav4"></a>
+  </nav>
+  <div class="right">
+    <select class="lang" id="lang">
+      <option value="ru">RU</option><option value="fr">FR</option><option value="en">EN</option>
+    </select>
+    <a class="lnk" href="#post" data-i="login"></a>
+    <a class="btn light" href="#post" data-i="signup"></a>
+  </div>
+</div>
+</header>
+
+<div class="wrap">
+
+<section class="hero">
+  <div>
+    <h1 data-i="h1"></h1>
+    <p data-i="hsub"></p>
+    <div class="cta">
+      <a class="btn" href="#feed" data-i="cta1"></a>
+      <a class="btn ghost" href="#feed" data-i="cta2"></a>
+    </div>
+  </div>
+  <div class="tiles">
+    <div class="tile" style="background-image:url('img/1.jpg')"><b data-i="tl1"></b><i data-i="tls1"></i></div>
+    <div class="tile" style="background-image:url('img/2.jpg')"><b data-i="tl2"></b><i data-i="tls2"></i></div>
+    <div class="tile" style="background-image:url('img/3.jpg')"><b data-i="tl3"></b><i data-i="tls3"></i></div>
+  </div>
+</section>
+
+<div class="search">
+  <div class="fld"><label data-i="sq"></label><input data-ph="sqp"></div>
+  <div class="fld"><label data-i="scat"></label><input data-ph="scatp"></div>
+  <div class="fld"><label data-i="sloc"></label><input data-ph="slocp"></div>
+  <div class="fld"><label data-i="swhen"></label><input data-ph="swhenp"></div>
+  <a class="btn" href="#feed" data-i="sbtn"></a>
+</div>
+<p class="note" data-i="rate"></p>
+
+<div class="cats">
+  <div class="cat"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M7 3v8a2 2 0 0 0 4 0V3M9 11v10M17 3c-1.5 2-2 4-2 6h4c0-2-.5-4-2-6zM17 9v12"/></svg><b data-i="c1"></b><span data-i="c1s"></span></div>
+  <div class="cat"><svg width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><b data-i="c2"></b><span data-i="c2s"></span></div>
+  <div class="cat"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M4 8l5-4 3 2 3-2 5 4-3 3v8H7v-8z"/></svg><b data-i="c3"></b><span data-i="c3s"></span></div>
+  <div class="cat"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M4 5h7v15H4zM13 5h7v15h-7z"/></svg><b data-i="c4"></b><span data-i="c4s"></span></div>
+</div>
+
+<section class="sec" id="feed">
+  <h2 data-i="feedt"></h2>
+  <p class="sub" data-i="feeds"></p>
+  <div class="tabs">
+    <button id="tabA" class="on" data-i="tab1"></button>
+    <button id="tabB" data-i="tab2"></button>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<div class="trust">
+  <div><b data-i="t1"></b><p data-i="t1s"></p></div>
+  <div><b data-i="t2"></b><p data-i="t2s"></p></div>
+  <div><b data-i="t3"></b><p data-i="t3s"></p></div>
+</div>
+
+<section class="sec" id="how">
+  <h2 data-i="hw"></h2>
+  <p class="sub" data-i="hws"></p>
+  <div class="steps">
+    <div class="step"><div class="n">01</div><b data-i="hw1"></b><p data-i="hw1s"></p></div>
+    <div class="step"><div class="n">02</div><b data-i="hw2"></b><p data-i="hw2s"></p></div>
+    <div class="step"><div class="n">03</div><b data-i="hw3"></b><p data-i="hw3s"></p></div>
+  </div>
+</section>
+
+<section class="sec" id="post">
+  <h2 data-i="post"></h2>
+  <p class="sub" data-i="posts"></p>
+  <form class="form" action="https://formspree.io/f/ВАШ_ID" method="POST">
+    <div class="f"><label data-i="ftype"></label>
+      <select name="type"><option data-i="fo1"></option><option data-i="fo2"></option></select></div>
+    <div class="f"><label data-i="ftitle"></label><input name="title" data-ph="ftitlep" required></div>
+    <div class="two">
+      <div class="f"><label data-i="fcat"></label>
+        <select name="cat"><option data-i="c1"></option><option data-i="c2"></option><option data-i="c3"></option><option data-i="c4"></option></select></div>
+      <div class="f"><label data-i="floc"></label><input name="loc" data-ph="flocp"></div>
+    </div>
+    <div class="two">
+      <div class="f"><label data-i="fdate"></label><input name="date" data-ph="fdatep"></div>
+      <div class="f"><label data-i="fprice"></label><input id="pr" name="price" type="number" value="150" min="1"></div>
+    </div>
+    <div class="calc">
+      <div><span data-i="calc1"></span><b id="fee">22,50 €</b></div>
+      <div class="net"><span data-i="calc2"></span><b id="net">127,50 €</b></div>
+    </div>
+    <label class="chk"><input type="checkbox" name="statut" required><span data-i="chk1"></span></label>
+    <label class="chk"><input type="checkbox" name="autonomie" required><span data-i="chk2"></span></label>
+    <div class="f" style="margin-top:16px"><label>Email</label><input name="email" type="email" required></div>
+    <button class="btn" style="width:100%" data-i="fsend"></button>
+    <div class="legal">
+      <p data-i="legal1"></p><p data-i="legal2"></p><p data-i="legal3"></p>
+    </div>
+  </form>
+</section>
+
+<footer>
+  <div class="fl">
+    <a href="#how" data-i="nav3"></a><a href="#post" data-i="post"></a>
+    <a href="mailto:vasvaltalentagency@gmail.com">vasvaltalentagency@gmail.com</a>
+  </div>
+  <p data-i="legal2" style="margin-bottom:6px"></p>
+  <p>VasVal Talents OÜ · 17193380 · Tallinn, Estonia</p>
+</footer>
+
+</div>
+
+<script>
+const T={
+ru:{nav1:"Найти специалиста",nav2:"Найти работу",nav3:"Как это работает",nav4:"Разместить объявление",login:"Войти",signup:"Регистрация",
+h1:"Нужный человек. На любую смену.",hsub:"Публикуйте смены и короткие проекты. Специалисты откликаются сами и сами ставят свою цену.",cta1:"Найти специалиста",cta2:"Найти работу",
+tl1:"Официант",tls1:"Свободен сегодня",tl2:"Повар",tls2:"Свободен на выходных",tl3:"Фотограф",tls3:"Свободен сейчас",
+sq:"Что нужно сделать",sqp:"Официант, фотограф…",scat:"Категория",scatp:"Выбрать",sloc:"Где",slocp:"Париж, округ",swhen:"Когда",swhenp:"Любое время",sbtn:"Искать",
+rate:"Ставку в объявлении устанавливает его автор, а не платформа.",
+c1:"Ресторация",c1s:"Зал, бар, кухня",c2:"Ивенты",c2s:"Хостес, монтаж, техника",c3:"Мода и креатив",c3s:"Съёмки, показы, бэкстейдж",c4:"Услуги и обучение",c4s:"Помощь, репетиторы, уборка",
+feedt:"Объявления в Париже",feeds:"Разместите заказ — специалисты откликаются сами.",tab1:"Ищу исполнителя",tab2:"Готов работать",
+resp:"Откликнуться",per:"за смену",perh:"в час",
+t1:"Проверенные профили",t1s:"Личность подтверждает лицензированный платёжный партнёр при регистрации.",
+t2:"Оплата через эскроу",t2s:"Деньги хранит лицензированный платёжный партнёр, а не VasVal FIND. Перевод — после подтверждения выполнения.",
+t3:"Комиссия 15%",t3s:"Одна ставка с успешной сделки. Без абонентской платы и скрытых сборов.",
+hw:"Как это работает",hws:"Три шага, без посредников между вами и специалистом.",
+hw1:"Публикуете объявление",hw1s:"Бизнес — смену, специалист — свою доступность. Цену ставит автор объявления.",
+hw2:"Получаете отклики",hw2s:"Договариваетесь напрямую. Платформа не вмешивается в переговоры и не назначает графики.",
+hw3:"Оплата после работы",hw3s:"Сумма заморожена у платёжного партнёра и уходит специалисту после подтверждения.",
+post:"Разместить объявление",posts:"Бесплатно. Комиссия удерживается только с успешной сделки.",
+ftype:"Тип объявления",fo1:"Ищу исполнителя",fo2:"Готов работать",ftitle:"Заголовок",ftitlep:"Официант на вечер, 6 часов",
+fcat:"Категория",floc:"Город и район",flocp:"Париж, 8-й округ",fdate:"Дата и время",fdatep:"Сегодня, 18:00",fprice:"Ваша цена, €",
+calc1:"Комиссия платформы 15%",calc2:"Специалист получает",
+chk1:"Я зарегистрирован как самозанятый или работаю через свою компанию",
+chk2:"Я сам устанавливаю ставки и выбираю, какие заказы принимать",
+fsend:"Опубликовать",
+legal1:"Ставку устанавливает специалист.",
+legal2:"Договор заключается напрямую со специалистом. VasVal FIND — площадка, а не работодатель.",
+legal3:"Деньги хранит лицензированный платёжный партнёр, а не VasVal FIND."},
+
+fr:{nav1:"Trouver un professionnel",nav2:"Trouver une mission",nav3:"Comment ça marche",nav4:"Publier une annonce",login:"Connexion",signup:"S’inscrire",
+h1:"La bonne personne. Pour chaque service.",hsub:"Publiez vos missions courtes. Les professionnels répondent eux-mêmes et fixent leur tarif.",cta1:"Trouver un professionnel",cta2:"Trouver une mission",
+tl1:"Serveur",tls1:"Disponible aujourd’hui",tl2:"Cuisinier",tls2:"Disponible ce week-end",tl3:"Photographe",tls3:"Disponible maintenant",
+sq:"Quel besoin",sqp:"Serveur, photographe…",scat:"Catégorie",scatp:"Choisir",sloc:"Où",slocp:"Paris, arrondissement",swhen:"Quand",swhenp:"Peu importe",sbtn:"Rechercher",
+rate:"Le tarif de l’annonce est fixé par son auteur, pas par la plateforme.",
+c1:"Restauration",c1s:"Salle, bar, cuisine",c2:"Événementiel",c2s:"Hôtesses, montage, technique",c3:"Mode & création",c3s:"Shootings, défilés, backstage",c4:"Services & cours",c4s:"Aide, cours, ménage",
+feedt:"Annonces à Paris",feeds:"Publiez votre besoin — les professionnels répondent d’eux-mêmes.",tab1:"Je cherche quelqu’un",tab2:"Je suis disponible",
+resp:"Répondre",per:"la mission",perh:"de l’heure",
+t1:"Profils vérifiés",t1s:"L’identité est vérifiée par le prestataire de paiement agréé lors de l’inscription.",
+t2:"Paiement sous séquestre",t2s:"Les fonds sont conservés par un prestataire de paiement agréé, et non par VasVal FIND. Versement après validation.",
+t3:"Commission de 15 %",t3s:"Une seule commission par mission réussie. Sans abonnement ni frais cachés.",
+hw:"Comment ça marche",hws:"Trois étapes, sans intermédiaire entre vous et le professionnel.",
+hw1:"Vous publiez",hw1s:"L’entreprise publie sa mission, le professionnel sa disponibilité. Le tarif est fixé par l’auteur.",
+hw2:"Vous recevez des réponses",hw2s:"Vous convenez directement. La plateforme n’intervient pas et n’impose aucun planning.",
+hw3:"Paiement après la mission",hw3s:"La somme est bloquée chez le prestataire de paiement et versée après validation.",
+post:"Publier une annonce",posts:"Gratuit. La commission n’est prélevée que sur une mission réussie.",
+ftype:"Type d’annonce",fo1:"Je cherche quelqu’un",fo2:"Je suis disponible",ftitle:"Titre",ftitlep:"Serveur pour la soirée, 6 heures",
+fcat:"Catégorie",floc:"Ville et quartier",flocp:"Paris, 8e",fdate:"Date et heure",fdatep:"Aujourd’hui, 18:00",fprice:"Votre tarif, €",
+calc1:"Commission plateforme 15 %",calc2:"Le professionnel reçoit",
+chk1:"Je suis inscrit comme indépendant ou je travaille via ma société",
+chk2:"Je fixe moi-même mes tarifs et je choisis les missions que j’accepte",
+fsend:"Publier",
+legal1:"Le tarif est fixé par le professionnel.",
+legal2:"Le contrat est conclu directement avec le professionnel. VasVal FIND est une plateforme, pas un employeur.",
+legal3:"Les fonds sont conservés par un prestataire de paiement agréé, et non par VasVal FIND."},
+
+en:{nav1:"Find a professional",nav2:"Find work",nav3:"How it works",nav4:"Post a listing",login:"Log in",signup:"Sign up",
+h1:"The right person. For any shift.",hsub:"Post short shifts and projects. Professionals reply themselves and set their own rate.",cta1:"Find a professional",cta2:"Find work",
+tl1:"Waiter",tls1:"Available today",tl2:"Chef",tls2:"Available this weekend",tl3:"Photographer",tls3:"Available now",
+sq:"What you need",sqp:"Waiter, photographer…",scat:"Category",scatp:"Select",sloc:"Where",slocp:"Paris, district",swhen:"When",swhenp:"Any time",sbtn:"Search",
+rate:"The rate in a listing is set by its author, not by the platform.",
+c1:"Hospitality",c1s:"Floor, bar, kitchen",c2:"Events",c2s:"Hosts, set-up, technical",c3:"Fashion & creative",c3s:"Shoots, shows, backstage",c4:"Services & tutoring",c4s:"Help, tutors, cleaning",
+feedt:"Listings in Paris",feeds:"Post what you need — professionals reply on their own.",tab1:"Looking for someone",tab2:"Available for work",
+resp:"Respond",per:"per shift",perh:"per hour",
+t1:"Verified profiles",t1s:"Identity is verified by the licensed payment provider at sign-up.",
+t2:"Escrow payment",t2s:"Funds are held by a licensed payment provider, not by VasVal FIND. Released after the work is confirmed.",
+t3:"15% commission",t3s:"One fee per completed job. No subscription, no hidden charges.",
+hw:"How it works",hws:"Three steps, with no intermediary between you and the professional.",
+hw1:"You post a listing",hw1s:"Businesses post shifts, professionals post availability. The author sets the rate.",
+hw2:"You get replies",hw2s:"You agree directly. The platform stays out of negotiations and assigns no schedules.",
+hw3:"Payment after the job",hw3s:"The amount is held by the payment provider and released once the work is confirmed.",
+post:"Post a listing",posts:"Free. Commission applies only to a completed job.",
+ftype:"Listing type",fo1:"Looking for someone",fo2:"Available for work",ftitle:"Title",ftitlep:"Waiter for the evening, 6 hours",
+fcat:"Category",floc:"City and area",flocp:"Paris, 8th",fdate:"Date and time",fdatep:"Today, 18:00",fprice:"Your rate, €",
+calc1:"Platform commission 15%",calc2:"Professional receives",
+chk1:"I am registered as self-employed or work through my own company",
+chk2:"I set my own rates and choose which jobs to accept",
+fsend:"Publish",
+legal1:"The rate is set by the professional.",
+legal2:"The contract is concluded directly with the professional. VasVal FIND is a platform, not an employer.",
+legal3:"Funds are held by a licensed payment provider, not by VasVal FIND."}
+};
+
+const NEED=[
+{p:150,ru:["Официант","6 ч · сегодня 18:00 · Ресторан, 8-й округ"],fr:["Serveur","6 h · aujourd’hui 18:00 · Restaurant, 8e"],en:["Waiter","6 h · today 18:00 · Restaurant, 8th"]},
+{p:220,ru:["Бармен","8 ч · сб 20:00 · Бар, Марэ"],fr:["Barman","8 h · sam 20:00 · Bar, Marais"],en:["Bartender","8 h · Sat 20:00 · Bar, Marais"]},
+{p:400,ru:["Фотограф на вернисаж","4 ч · пт 19:00 · Галерея, 16-й округ"],fr:["Photographe vernissage","4 h · ven 19:00 · Galerie, 16e"],en:["Opening-night photographer","4 h · Fri 19:00 · Gallery, 16th"]},
+{p:180,ru:["Хостес на презентацию","5 ч · 12.09 14:00 · Шоурум, 1-й округ"],fr:["Hôtesse d’accueil","5 h · 12.09 14:00 · Showroom, 1er"],en:["Event host","5 h · Sep 12, 14:00 · Showroom, 1st"]},
+{p:130,ru:["Помощник на кухне","7 ч · завтра 11:00 · Бистро, 11-й округ"],fr:["Commis de cuisine","7 h · demain 11:00 · Bistrot, 11e"],en:["Kitchen assistant","7 h · tomorrow 11:00 · Bistro, 11th"]},
+{p:350,ru:["Ассистент стилиста","10 ч · 15.09 09:00 · Студия, Пантен"],fr:["Assistant styliste","10 h · 15.09 09:00 · Studio, Pantin"],en:["Stylist assistant","10 h · Sep 15, 09:00 · Studio, Pantin"]}
+];
+const OFFER=[
+{p:18,h:1,ru:["Мария · зал и бар","3 года опыта · свободна сегодня и в выходные"],fr:["Maria · salle et bar","3 ans d’expérience · dispo aujourd’hui et le week-end"],en:["Maria · floor and bar","3 years’ experience · free today and weekends"]},
+{p:90,h:1,ru:["Тома · фотограф","Ивенты и портрет · свободен по выходным"],fr:["Thomas · photographe","Événements et portrait · dispo le week-end"],en:["Thomas · photographer","Events and portraits · free at weekends"]},
+{p:60,h:1,ru:["Анна · визажист","Бэкстейдж и показы · свободна 12–20.09"],fr:["Anna · maquilleuse","Backstage et défilés · dispo 12–20.09"],en:["Anna · make-up artist","Backstage and shows · free Sep 12–20"]}
+];
+
+let L=localStorage.getItem("vv")||"ru",TAB="A";
+const eur=n=>n.toFixed(2).replace(".",",")+" €";
+
+function render(){
+  const d=T[L];
+  document.querySelectorAll("[data-i]").forEach(e=>e.textContent=d[e.dataset.i]||"");
+  document.querySelectorAll("[data-ph]").forEach(e=>e.placeholder=d[e.dataset.ph]||"");
+  document.documentElement.lang=L;
+  const src=TAB==="A"?NEED:OFFER;
+  document.getElementById("grid").innerHTML=src.map(x=>`
+    <article class="card">
+      <h3>${x[L][0]}</h3>
+      <div class="m">${x[L][1]}</div>
+      <div class="row">
+        <div class="p">${x.p} €<small>${x.h?d.perh:d.per}</small></div>
+        <button class="btn">${d.resp}</button>
+      </div>
+    </article>`).join("");
+  calc();
+}
+function calc(){
+  const v=+document.getElementById("pr").value||0;
+  document.getElementById("fee").textContent=eur(v*0.15);
+  document.getElementById("net").textContent=eur(v*0.85);
+}
+document.getElementById("lang").value=L;
+document.getElementById("lang").onchange=e=>{L=e.target.value;localStorage.setItem("vv",L);render()};
+document.getElementById("tabA").onclick=()=>{TAB="A";tabA.classList.add("on");tabB.classList.remove("on");render()};
+document.getElementById("tabB").onclick=()=>{TAB="B";tabB.classList.add("on");tabA.classList.remove("on");render()};
+document.getElementById("pr").oninput=calc;
+render();
+</script>
+</body>
+</html>
